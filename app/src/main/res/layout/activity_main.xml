@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101218"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Reely"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Your idea. Your next reel."
+            android:textColor="#C4B5FD"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Get a filming guide, caption and hashtags for your next short video."
+            android:textColor="#C5C7D0"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="12dp"
+            android:text="Choose your content"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnGym"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            android:backgroundTint="#C4B5FD"
+            android:text="Gym and Fitness"
+            android:textAllCaps="false"
+            android:textColor="#161222"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="56dp"
+            android:backgroundTint="#C4B5FD"
+            android:text="Food and Recipes"
+            android:textAllCaps="false"
+            android:textColor="#161222"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnGaming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="56dp"
+            android:backgroundTint="#C4B5FD"
+            android:text="Gaming"
+            android:textAllCaps="false"
+            android:textColor="#161222"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnStudy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="56dp"
+            android:backgroundTint="#C4B5FD"
+            android:text="Study and College"
+            android:textAllCaps="false"
+            android:textColor="#161222"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="56dp"
+            android:backgroundTint="#C4B5FD"
+            android:text="Something Else"
+            android:textAllCaps="false"
+            android:textColor="#161222"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Simple content planning. No account needed."
+            android:textColor="#C5C7D0"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,23 @@
+# Generated build files and caches
+.gradle/
+.kotlin/
+build/
+.externalNativeBuild/
+.cxx/
+captures/
+
+# Computer-specific settings
+local.properties
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Built app packages
+*.apk
+*.aab
+
+# Signing credentials - never upload these
+*.jks
+*.keystore
+keystore.properties
