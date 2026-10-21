@@ -90,6 +90,21 @@ public class ResultActivity extends AppCompatActivity {
         findViewById(R.id.btnEdit).setOnClickListener(
                 view -> finish()
         );
+        findViewById(R.id.btnOpenFilmingAssistant).setOnClickListener(
+                view -> {
+                    Intent intent = new Intent(
+                            ResultActivity.this,
+                            FilmingAssistantActivity.class
+                    );
+
+                    intent.putExtra(
+                            "TOPIC",
+                            getIntent().getStringExtra("TOPIC")
+                    );
+
+                    startActivity(intent);
+                }
+        );
     }
 
     private String readExtra(String key, String fallback) {
