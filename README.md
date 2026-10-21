@@ -62,3 +62,56 @@ hashtags using predefined Java templates.
 
 This prototype demonstrates three functional layouts,
 user interaction, explicit intents, and an implicit intent.~~~~
+
+## Milestone 2: Filming Assistant
+
+Reely now includes a Filming Assistant that helps users check
+phone movement before filming their planned reel.
+
+The assistant is opened from the Result screen using the
+Prepare to Film button. The reel topic is passed to the
+assistant using an explicit intent with an extra.
+
+### Sensor functionality
+
+The assistant reads the device's accelerometer using Android's
+SensorManager and SensorEventListener.
+
+Accelerometer readings include gravity. The app uses a low-pass
+filter to estimate gravity, subtracts that estimate, calculates
+the movement magnitude, and smooths the result.
+
+The processed value dynamically updates:
+
+- A movement indicator bar
+- A movement status
+- Practical filming advice
+
+Raw X, Y and Z readings are also displayed.
+
+The sensor listener is registered when the Activity resumes and
+unregistered when it pauses. The app checks whether an
+accelerometer is available and displays a fallback message if not.
+
+### Testing
+
+The feature was tested using the Android emulator's
+Extended Controls > Virtual sensors > Device Pose controls.
+
+Manual checks passed for:
+
+- Movement feedback changing when the simulated phone moves
+- The movement estimate settling when movement stops
+- Returning to the existing reel plan
+- Reopening the assistant and restarting sensor readings
+
+### Limitations
+
+The movement thresholds are prototype values and have not been
+validated on a physical phone.
+
+The assistant is a simple movement aid, not video stabilisation.
+Low detected movement does not guarantee a sharp, correctly
+framed, or well-lit video.
+
+Saved-plan storage remains planned for Milestone 3.
