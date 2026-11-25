@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.util.Log;
+import android.widget.Button;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -82,6 +84,19 @@ public class ResultActivity extends AppCompatActivity {
                         + "CAPTION\n" + caption + "\n\n"
                         + "SUGGESTED HASHTAGS\n" + hashtags;
 
+        Button btnSavePlan = findViewById(R.id.btnSavePlan);
+
+        btnSavePlan.setOnClickListener(view ->
+                savePlan(
+                        btnSavePlan,
+                        category,
+                        topic,
+                        style,
+                        guide,
+                        caption,
+                        hashtags
+                )
+        );
         findViewById(R.id.btnShare).setOnClickListener(
                 view -> sharePlan()
         );
@@ -285,7 +300,76 @@ public class ResultActivity extends AppCompatActivity {
                         + "short on-screen labels.";
         }
     }
+    private void savePlan(
+            Button saveButton,
+            String category,
+            String topic,
+            String style,
+            String guide,
+            String caption,
+            String hashtags
+    ) {
+        // Prevent repeated taps while this save is running.
+        saveButton.setEnabled(false);
+        saveButton.setText("Saving...");
 
+        SavedReel reel = new SavedReel();
+        reel.category = category;
+        reel.topic = topic;
+        reel.style = style;
+        reel.filmingGuide = guide;
+        reel.caption = caption;
+        reel.hashtags = hashtags;
+        reel.createdAt = System.currentTimeMillis();
+
+        ReelyDatabase.databaseExecutor.execute(() -> {
+            try {
+                ReelyDatabase database = ReelyDatabase.getInstance(
+                        getApplicationContext()
+                );
+
+                long savedId = database.savedReelDao().insert(reel);
+
+                if (savedId <= 0) {
+                    throw new IllegalStateException(
+                            "Database did not return a valid saved plan ID"
+                    );
+                }
+
+                runOnUiThread(() -> {
+                    if (isFinishing() || isDestroyed()) {
+                        return;
+                    }
+
+                    saveButton.setText("Plan Saved");
+
+                    Toast.makeText(
+                            ResultActivity.this,
+                            "Reel plan saved on this device",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                });
+
+            } catch (Exception exception) {
+                Log.e("ResultActivity", "Could not save reel plan", exception);
+
+                runOnUiThread(() -> {
+                    if (isFinishing() || isDestroyed()) {
+                        return;
+                    }
+
+                    saveButton.setEnabled(true);
+                    saveButton.setText("Save Plan");
+
+                    Toast.makeText(
+                            ResultActivity.this,
+                            "Could not save the plan. Please try again.",
+                            Toast.LENGTH_LONG
+                    ).show();
+                });
+            }
+        });
+    }
     private void sharePlan() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");

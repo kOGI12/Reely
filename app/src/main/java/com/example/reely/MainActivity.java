@@ -59,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnGeneral).setOnClickListener(
                 view -> selectCategory("General")
         );
+        findViewById(R.id.btnSavedPlans).setOnClickListener(
+                view -> startActivity(
+                        new Intent(
+                                MainActivity.this,
+                                SavedPlansActivity.class
+                        )
+                )
+        );
     }
 
     private void selectCategory(String category) {

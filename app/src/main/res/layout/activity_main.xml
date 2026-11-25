@@ -106,6 +106,17 @@
             android:textColor="#161222"
             android:textSize="16sp" />
 
+        <Button
+            android:id="@+id/btnSavedPlans"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:minHeight="56dp"
+            android:backgroundTint="#303440"
+            android:text="Saved Plans"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
